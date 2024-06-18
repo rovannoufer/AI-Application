@@ -23,7 +23,7 @@ function Header() {
           </NavLink>
         
 
-         <div className={`absolute ${ toggle ? " -top-full" :  " top-[110px]"} z-[1] left-0 w-full mr-3 text-white flex flex-col items-center justify-center p-10 gap-4 bg-black  lg:static lg:flex-row lg:bg-transparent lg:justify-end`}> 
+         <div className={`absolute ${ toggle ? " -top-full" :  " top-[110px]"} z-[1] left-0 w-full mr-3  bg-black text-white flex flex-col items-center justify-center p-10 gap-4   lg:static lg:flex-row lg:bg-transparent lg:justify-end`}> 
 
            <NavLink to={'/home'} className={`  lg:text-black sm:text-white`} >
            <FontAwesomeIcon icon={faHouse} className='pr-3'  />
@@ -32,7 +32,7 @@ function Header() {
             </NavLink>
            <NavLink to={'/conversation'} className={"  lg:text-black sm:text-white"}>
            <FontAwesomeIcon icon={faMessage} className='pr-3'/>
-            Code Generation
+            Conversation
            </NavLink>
            <NavLink to={'/image'} className={" lg:text-black sm:text-white"}> 
            <FontAwesomeIcon icon={faImage} className='pr-3'/>
