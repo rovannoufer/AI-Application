@@ -26,7 +26,7 @@ function Conversation() {
     const url = 'https://api.openai.com/v1/chat/completions';
     const headers = {
       'Content-type': 'application/json',
-      "Authorization": `` 
+      "Authorization": `api` 
     };
     const data= {
       model: "gpt-4",
