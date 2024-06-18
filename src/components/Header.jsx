@@ -9,7 +9,7 @@ function Header() {
 
     const [open,setOpen] = useState(true);
   return (
-       <div className={`h-full md:flex md:flex-col ${ open ? "w-60 ": " w-16"} fixed inset-y-0 z-1
+       <div className={`h-full md:flex w-16 md:flex-col ${ open ? "w-60": " w-16"} fixed inset-y-0 z-1
        bg-black`}>
           <div className='text-white flex flex-col py-10'>
             <div className='flex justify-end mr-5 mb-5'>
