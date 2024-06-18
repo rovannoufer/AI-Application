@@ -13,7 +13,7 @@ function Imagegenerate() {
               method: "POST",
               headers:{
                 "Content-Type": "application/json",
-                "Authorization": `Bearer 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` 
+                "Authorization": `` 
               },
               body:JSON.stringify({
                   prompt: "cat and dog",
