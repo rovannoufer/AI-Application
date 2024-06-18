@@ -6,14 +6,8 @@ import Navbar from '../components/Navbar'
 function Home() {
   return (
     <>
-     <div className='h-full relative'>
-           <Header />
-         
-         <div className='flex flex-col pl-60'> 
-            <Navbar />
-            <Outlet />
-         </div>
-      </div>
+      <Header />
+      <Outlet />     
     </>
   )
 }
