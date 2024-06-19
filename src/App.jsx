@@ -5,6 +5,8 @@ import Landing from './components/Landing';
 import Conversation from './components/Conversation';
 import Imagegenerate from './components/Imagegenerate';
 import Video from './components/Video';
+import Image from './components/image';
+import Conversationl from './pages/Conversationl';
 
 function App() {
   
@@ -14,11 +16,16 @@ function App() {
       <BrowserRouter>
          <Routes>
            <Route path='/' element={<Home />}>
-              <Route path='/home' element={<Landing />} />
-              <Route path='/conversation' element={<Conversation />} />
-              <Route path='/image' element={<Imagegenerate />} />
+              <Route path='/' element={<Landing />} />
+              <Route path='conversation' element={<Conversationl />} />
+              <Route path='chat' element ={<Conversation />} />
+              <Route path='/prompt' element={<Image />} />
+              <Route path='/imageprompt' element={ <Imagegenerate />} />
+             
               <Route path='/video' element={<Video />} />
            </Route>
+
+           
          </Routes>
       </BrowserRouter>
     </>

@@ -47,7 +47,7 @@ function Conversation() {
   return (
     <> 
        <div className='flex p-8 gap-4 items-center'>
-            <Link  to={'/home'}>
+            <Link  to={'/conversation'}>
             <FontAwesomeIcon icon={ faArrowLeft } />
             </Link>
           <FontAwesomeIcon icon={ faMessage } className=' w-10 h-10'/>
@@ -60,14 +60,21 @@ function Conversation() {
        <div className='mt-10 flex flex-col items-center' >
               <div className='relative flex flex-col justify-center p-5 rounded-lg shadow-xl w-full lg:w-[50%]'> 
                       
-                      <div className='relative lg:left-44 left-14'>
-                          <input type='text' placeholder='Enter a prompt here'  onChange={(e) => setInputValue(e.target.value)}  className='rounded-lg p-3 w-[70%] border'/>
-                          <button type='submit' className=' p-3 absolute lg:left-[61%] left-44 lg:hover:bg-black lg:hover:text-white lg:hover:rounded-lg'
+                      <div className=' flex justify-center '>
+                          <input type='text' placeholder='Enter a prompt here'  onChange={(e) => setInputValue(e.target.value)}  className='rounded-lg p-3 w-[70%] text-center border'/>
+                          {/* <button type='submit' className=' p-3 absolute lg:left-[61%] left-44 lg:hover:bg-black lg:hover:text-white lg:hover:rounded-lg'
                            onClick={handleSubmit}
                           >
                             Generate 
-                          </button>
+                          </button> */}
                       </div>
+                     <div className='flex justify-center'>
+                          <button type='submit' className=' p-3 mt-4 hover:bg-black hover:text-white hover:rounded-lg'
+                                  onClick={handleSubmit}
+                                  >
+                            Generate 
+                          </button>
+                     </div>
                       
 
                       <div>

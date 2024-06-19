@@ -1,8 +1,9 @@
 import React, { useState, useRef } from 'react';
 import upload from "../img/upload.jpg"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {  faXmark } from '@fortawesome/free-solid-svg-icons';
+import {  faXmark, faArrowLeft, faImage } from '@fortawesome/free-solid-svg-icons';
 import Model from './showmodel';
+import { Link } from 'react-router-dom';
 
 
 
@@ -61,7 +62,17 @@ function Imagegenerate() {
   return (
 
     <>
-      <div className='flex flex-col items-center  text-white relative top-48 left-20 w-[65%]  lg:left-96 '>
+     <div className='flex p-8 gap-4 items-center'>
+            <Link  to={'/prompt'}>
+            <FontAwesomeIcon icon={ faArrowLeft } />
+            </Link>
+          <FontAwesomeIcon icon={ faImage } className=' w-10 h-10'/>
+          <div>
+              <p className='text-3xl'> Image Prompting </p>
+              <p className='text-sm'> Our most advanced Prompting model</p>
+          </div>
+       </div>
+      <div className='flex flex-col items-center  text-white relative top-20 lg:top-32 left-20 w-[65%]  lg:left-96 '>
         <div className='flex flex-col relative items-center p-5 bg-[#ffffff] text-gray-500 mt-3 rounded-2xl shadow-2xl '>
            <img src={upload}  className='h-40'/>
            <p> Drop your file here</p>
