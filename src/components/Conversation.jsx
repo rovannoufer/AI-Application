@@ -1,16 +1,17 @@
 import React, { useRef, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-
 import { faArrowLeft, faMagnifyingGlass, faMessage } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 import image from "../img/logo.png"
-
+import { UserAuth } from './AuthContext'
 import { GoogleGenerativeAI } from '@google/generative-ai'
 
 function Conversation() {
 
   const [inputValue, setInputValue] = useState("");
   const [chatLog, setChatLog] = useState([]);
+  const {user } = UserAuth();
+  console.log(user.photoURL)
 
   const genAi = new GoogleGenerativeAI("api key")
 
@@ -87,7 +88,7 @@ function Conversation() {
                                 message.type === 'user' ? 'bg-black lg:w-[25%] ' : 'bg-black lg:w-[75%] h-40 overflow-y-auto'
                               } rounded-lg p-4 text-white`}>
                                 {
-                                  message.type === 'user' ? <h1>USER : </h1> :<img src={image} className='bg-white rounded-lg '/>
+                                  message.type === 'user' ? <img src={user.photoURL} className='bg-white rounded-2xl h-10 '/> :<img src={image} className='bg-white rounded-lg '/>
                                 }
                                 
                                 {message.message}

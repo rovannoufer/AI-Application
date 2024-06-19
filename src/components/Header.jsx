@@ -1,14 +1,35 @@
 import React, { useEffect, useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink,useNavigate } from 'react-router-dom'
 import image from "../img/logo.png"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHouse, faImage, faList, faMessage, faVideo } from '@fortawesome/free-solid-svg-icons'
+import { faHouse, faImage, faList} from '@fortawesome/free-solid-svg-icons'
+import { UserAuth } from './AuthContext'
 
 function Header() {
   const [toggle, setToggle] = useState(true);
+  const {user, logOut } = UserAuth();
+  const navigate = useNavigate();
+ 
+ 
+  const handleSignOut =async () =>{
+
+        try{
+          
+          await logOut();
+        }catch(err){
+          console.log(err);
+        }
+  }
+
+  const handleSignIn =() =>{
+       
+    navigate('/signin');
+  }
 
   
   return (
+
+    
 
 
     <>
@@ -23,7 +44,7 @@ function Header() {
           </NavLink>
         
 
-         <div className={`absolute ${ toggle ? " -top-full" :  " top-[110px]"} z-[1] left-0 w-full mr-3  bg-black text-white flex flex-col items-center justify-center p-10 gap-4   lg:static lg:flex-row lg:bg-transparent lg:justify-end`}> 
+         <div className={`absolute ${ toggle ? " -top-full" :  " top-[110px]"} z-[1] left-0 w-full mr-3  bg-black text-white flex flex-col items-center justify-center p-10 gap-4 lg:static lg:flex-row lg:bg-transparent lg:justify-end`}> 
 
            <NavLink to={'/'} className={`  lg:text-black sm:text-white`} >
            
@@ -42,6 +63,11 @@ function Header() {
            
            Content Generation
            </NavLink>
+
+          
+
+           { user ? <button onClick={ handleSignOut }  className={"  lg:text-black sm:text-white"}> SignOut </button> :
+            <button onClick={ handleSignIn } className={"  lg:text-black sm:text-white"}> SignIn </button> }
          
 
             

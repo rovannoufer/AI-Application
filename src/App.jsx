@@ -11,7 +11,8 @@ import Content from './components/contentgenerate';
 import Contentgl from './pages/Contentgl';
 import { AuthContextProvider } from './components/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
-import Signup from './pages/Signup';
+import Login from './pages/Login';
+import SignIn from './pages/SignIn';
 
 function App() {
   
@@ -27,14 +28,16 @@ function App() {
                 <Route path='conversation' element={<Conversationl />} />
                 <Route path='chat' element ={<ProtectedRoute>  <Conversation /> </ProtectedRoute>} />
                 <Route path='/prompt' element={<Image />} />
-                <Route path='/imageprompt' element={ <Imagegenerate />} />
+                <Route path='/imageprompt' element={ <ProtectedRoute> <Imagegenerate /> </ProtectedRoute>} />
               
                 <Route path='/contentgenerate' element={<Contentgl />} />
-                <Route path='/content' element={<Content />}/>
+                <Route path='/content' element={<ProtectedRoute> <Content /> </ProtectedRoute>}/>
             </Route>
 
-            <Route path='/signin' element={ <Signup type = "sign-in"/>  }/>
-            <Route path='/signup' element={ <Signup type = "sign-up"/> }/>
+           
+
+            <Route  path='/signin' element={<SignIn /> } />
+            <Route path='/login' element={<Login />} />
 
             
           </Routes>
