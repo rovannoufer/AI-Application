@@ -4,9 +4,11 @@ import Home from './pages/Home';
 import Landing from './components/Landing';
 import Conversation from './components/Conversation';
 import Imagegenerate from './components/Imagegenerate';
-import Video from './components/Video';
+
 import Image from './components/image';
 import Conversationl from './pages/Conversationl';
+import Content from './components/contentgenerate';
+import Contentgl from './pages/Contentgl';
 
 function App() {
   
@@ -22,7 +24,8 @@ function App() {
               <Route path='/prompt' element={<Image />} />
               <Route path='/imageprompt' element={ <Imagegenerate />} />
              
-              <Route path='/video' element={<Video />} />
+              <Route path='/contentgenerate' element={<Contentgl />} />
+              <Route path='/content' element={<Content />}/>
            </Route>
 
            

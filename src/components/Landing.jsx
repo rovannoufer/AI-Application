@@ -1,3 +1,5 @@
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react'
 import { Link } from 'react-router-dom';
 import Typewriter from 'typewriter-effect';
@@ -29,19 +31,27 @@ function Landing() {
 
     <div className=' flex flex-col flex-wrap lg:flex-row justify-center text-white gap-5 '>
         <div className='p-10 basis-[10%] lg:basis-[25%] border rounded-2xl shadow-2xl  text-center bg-black '>
-         <Link to={'/conversation'}>
+         
           <h1 className='text-4xl sm:text-3xl md:text-4xl lg:text-5xl mb-2'> Conversation </h1>
                   <p className='italic'> Engage in dynamic, real-time conversations </p>
                   <p className='italic'> Powered by cutting-edge AI, </p>  
-         </Link>
+                  <Link to={'/conversation'}> <button className='mt-5 hover:bg-white hover:text-black p-3 hover:rounded-xl'> Get Started
+                       <FontAwesomeIcon icon={faArrowRight} className='ml-2' />
+                     </button> </Link>
             </div>
          <div className='p-10 basis-[10%] lg:basis-[25%] border rounded-2xl shadow-2xl  bg-black text-center'>
-         <h1 className='text-4xl sm:text-3xl md:text-4xl lg:text-5xl mb-2'> Prompting </h1>
-         <p className='italic'> This generate content from media files </p>
+              <h1 className='text-4xl sm:text-3xl md:text-4xl lg:text-5xl mb-2'> Prompting </h1>
+              <p className='italic'> This generate content from media files </p>
+              <Link to={'/prompt'}> <button className='mt-5 hover:bg-white hover:text-black p-3 hover:rounded-xl'> Get Started
+                       <FontAwesomeIcon icon={faArrowRight} className='ml-2' />
+                     </button> </Link>
          </div>
          <div className='p-10 basis-[10%] lg:basis-[25%] border rounded-2xl shadow-2xl  bg-black text-center'>
-         <h1 className='text-4xl sm:text-3xl md:text-4xl lg:text-5xl mb-2'> Content Generation </h1>
-         <p className='italic'> Transform your creative process with AI-powered content generation </p>
+              <h1 className='text-4xl sm:text-3xl md:text-4xl lg:text-5xl mb-2'> Content Generation </h1>
+              <p className='italic'> Transform your creative process with AI-powered content generation </p>
+              <Link to={'/contentgenerate'}> <button className='mt-5 hover:bg-white hover:text-black p-3 hover:rounded-xl'> Get Started
+                       <FontAwesomeIcon icon={faArrowRight} className='ml-2' />
+                     </button> </Link>
          </div>
     </div>
     </>

@@ -1,6 +1,8 @@
 import React, { useRef } from 'react'
 import { Link } from 'react-router-dom'
 import Typewriter from 'typewriter-effect'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
 function Image() {
     
@@ -32,14 +34,16 @@ function Image() {
         </div>
 
         <div className='flex flex-col items-center  text-black text-center '>
-              <div className='shadow-2xl  rounded-2xl lg:w-[25%] p-10 '>
+              <div className='lg:shadow-2xl  lg:rounded-2xl lg:w-[25%] p-10 '>
               <div>
-              <p className='text-2xl lg:text-3xl mb-5'> Our advanced AI models can generate captivating content from your uploaded images, 
+              <p className='text-2xl lg:text-xl mb-5'> Our advanced AI models can generate captivating content from your uploaded images, 
                 transforming them into inspiring narratives or engaging descriptions. </p>    
               </div> 
               <div>
                 
-                <Link to={'/imageprompt'} className='hover:bg-black hover:text-white p-3 rounded-xl'> Get Started </Link>
+                <Link to={'/imageprompt'} className='bg-black text-white p-3 rounded-xl'> Get Started
+                <FontAwesomeIcon icon={faArrowRight} className='ml-2' />
+                 </Link>
               </div>
               </div>
         </div>
