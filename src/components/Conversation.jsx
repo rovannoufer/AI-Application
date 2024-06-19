@@ -3,9 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { faArrowLeft, faMagnifyingGlass, faMessage } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
 import image from "../img/logo.png"
-import OpenAI from 'openai'
+
 import { GoogleGenerativeAI } from '@google/generative-ai'
 
 function Conversation() {
