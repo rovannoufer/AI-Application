@@ -2,9 +2,15 @@ import React, { useState, useRef } from 'react';
 import upload from "../img/upload.jpg"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {  faXmark } from '@fortawesome/free-solid-svg-icons';
+import Model from './showmodel';
+
+
+
 function Imagegenerate() {
   const [generatedText, setGeneratedText] = useState("");
   const [file,setfile ] = useState();
+  const [showModel, setShowModel ] = useState(false);
+  const [imageURL, setImageURL ] = useState("")
   const fileref = useRef();
   const paraRef = useRef(null);
 
@@ -42,8 +48,11 @@ function Imagegenerate() {
       }
 
       const data = await response.json();
+    
       setGeneratedText(data.chunkText); 
-      console.log(data.downloadURL)
+      setImageURL(data.downloadURL);
+      setShowModel(true);
+      
     } catch (error) {
       console.error(error);
     }
@@ -61,16 +70,15 @@ function Imagegenerate() {
         </div>
        
        {
-        
-      
-        file  && <div className='text-black  p-3 mt-4 w-full lg:w-[30%] rounded-2xl shadow-2xl bg-opacity-15 bg-black relative'>
-        <p> { file.name} </p>
+        file  && <div className='text-black  p-3 mt-4 w-full lg:w-[30%] rounded-2xl shadow-2xl bg-opacity-5 bg-black relative'>
+        <p className='pl-2'> { file.name} </p>
         <FontAwesomeIcon icon={faXmark} className='absolute right-4 top-3 hover:bg-white p-1 rounded-xl' onClick={()=> setfile("")}/>
       </div>
        }
       
       </div>
-
+      
+      { showModel && <Model onClose={()=> setShowModel(false)} result = { generatedText }  url = { imageURL } />  }
 
     </>
     
