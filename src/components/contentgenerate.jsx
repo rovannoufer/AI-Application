@@ -1,8 +1,9 @@
 import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Toaster, toast } from 'react-hot-toast';
 
-import { faArrowLeft, faMessage } from '@fortawesome/free-solid-svg-icons'
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 function Content() {
   const inputRef = useRef();
   const [answer,setAnswer] = useState("");
@@ -13,7 +14,7 @@ function Content() {
    
 
     try {
-      const response = await fetch("http://localhost:3001/contentgeneration", {
+      const response = await fetch("https://ai-app-server.onrender.com/contentgeneration", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json' 
@@ -37,14 +38,15 @@ function Content() {
     const copyData = copyRef.current.innerText;
     try {
        await navigator.clipboard.writeText(copyData);
-       console.log('Content copied to clipboard');
+       toast.success('Content copied to clipboard');
      } catch (err) {
-       console.error('Failed to copy: ', err);
+       toast.error('Failed to copy: ', err);
      }
  }
 
   return (
    <>
+   <Toaster />
      <div className='flex p-8 gap-4 items-center'>
             <Link  to={'/contentgenerate'}>
             <FontAwesomeIcon icon={ faArrowLeft } />

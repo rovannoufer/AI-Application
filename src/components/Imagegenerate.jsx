@@ -61,7 +61,7 @@ function Imagegenerate() {
     }))
 
     try {
-      const response = await fetch("http://localhost:3001/uploads", {
+      const response = await fetch("https://ai-app-server.onrender.com/uploads", {
         method: 'POST',
         body: formData, 
       });
