@@ -1,10 +1,5 @@
 node_modules/
 
 uploads
-/.env
+.env
 
-demo.jsx
-
-image.js
-
-logo.jpg
