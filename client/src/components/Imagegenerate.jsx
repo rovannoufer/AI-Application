@@ -49,8 +49,6 @@ function Imagegenerate() {
 
   const handle = async () => {
     const files = file;
-    
-    console.log(files);
     if (!files) {
       console.error("No file selected");
       return;

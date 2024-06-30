@@ -10,8 +10,7 @@ function Content() {
 
   const handle = async () => {
     const data = { prompt: inputRef.current.value }; 
-    console.log(data);
-    console.log("Clicked");
+   
 
     try {
       const response = await fetch("http://localhost:3001/contentgeneration", {
@@ -27,8 +26,6 @@ function Content() {
       }
 
       const result = await response.json();
-      console.log(result);
-      console.log(result.chunkText)
       setAnswer(result.chunkText)
     } catch (e) {
       console.error(e);
@@ -38,7 +35,6 @@ function Content() {
 
   const handleCopy = async () =>{
     const copyData = copyRef.current.innerText;
-    console.log(copyData)
     try {
        await navigator.clipboard.writeText(copyData);
        console.log('Content copied to clipboard');

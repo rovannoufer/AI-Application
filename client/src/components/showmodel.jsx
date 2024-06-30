@@ -8,7 +8,6 @@ function Model({ result, onClose, url }) {
   
   const handleCopy = async () =>{
      const copyData = copyRef.current.innerText;
-     console.log(copyData)
      try {
         await navigator.clipboard.writeText(copyData);
         console.log('Content copied to clipboard');

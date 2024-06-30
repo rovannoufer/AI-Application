@@ -38,7 +38,6 @@ function Conversation() {
      
       const botMessage = responseData.message;
       setChatLog((prevChatLog) => [...prevChatLog, { type: 'bot', message: botMessage }]);
-      console.log(botMessage);
     } catch (e) {
       console.log(e);
     }
