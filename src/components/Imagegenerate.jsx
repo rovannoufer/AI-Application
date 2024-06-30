@@ -1,27 +1,51 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useCallback, useEffect } from 'react';
 import upload from "../img/upload.jpg"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {  faXmark, faArrowLeft, faImage } from '@fortawesome/free-solid-svg-icons';
 import Model from './showmodel';
 import { Link } from 'react-router-dom';
+import { useDropzone } from 'react-dropzone';
 
 
 
 function Imagegenerate() {
   const [generatedText, setGeneratedText] = useState("");
-  const [file,setfile ] = useState();
+  const [file,setfile ] = useState("");
   const [showModel, setShowModel ] = useState(false);
   const [imageURL, setImageURL ] = useState("")
   const fileref = useRef();
+  const [dataURL, setDataURL ] = useState(null);
   const paraRef = useRef(null);
+  
+  const onDrop = useCallback(file =>{
+    file.forEach(file=>{
+      const reader = new FileReader()
+      reader.onload =() =>{
+        const binaryStr = reader.result
+        setDataURL(binaryStr)
+      }
+      reader.readAsDataURL(file)
+    })
 
-  console.log(file)
+  },[])
 
+  // const { getRootProps,acceptedFiles,getInputProps,isDragActive } = useDropzone({ onDrop })
+
+  // useEffect(() => {
+  //   if (acceptedFiles.length > 0) {
+  //     const selectedFile = acceptedFiles[0];
+  //     // console.log(selectedFile);
+  //     setfile(selectedFile);
+  //   }
+  // }, [acceptedFiles]);
+
+  
   const handleInput = () =>{
     const files = fileref.current.files[0];
     setfile(files)
     
   }
+
 
   const handle = async () => {
     const files = file;
@@ -81,7 +105,9 @@ function Imagegenerate() {
         </div>
        
        {
-        file  && <div className='text-black  p-3 mt-4 w-full lg:w-[30%] rounded-2xl shadow-2xl bg-opacity-5 bg-black relative'>
+        file && 
+        <div className='flex text-black  p-3 mt-4 w-full lg:w-[30%] rounded-2xl shadow-2xl bg-opacity-5 bg-black relative'>
+         <img src={dataURL} className='w-24'/>
         <p className='pl-2'> { file.name} </p>
         <FontAwesomeIcon icon={faXmark} className='absolute right-4 top-3 hover:bg-white p-1 rounded-xl' onClick={()=> setfile("")}/>
       </div>
@@ -95,6 +121,8 @@ function Imagegenerate() {
     
   );
 }
+
+
 
 export default Imagegenerate;
 

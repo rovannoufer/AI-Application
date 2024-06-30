@@ -4,24 +4,14 @@ import { faArrowLeft, faMagnifyingGlass, faMessage } from '@fortawesome/free-sol
 import { Link } from 'react-router-dom'
 import image from "../img/logo.png"
 import { UserAuth } from './AuthContext'
-import { GoogleGenerativeAI } from '@google/generative-ai'
 
 function Conversation() {
 
   const [inputValue, setInputValue] = useState("");
   const [chatLog, setChatLog] = useState([]);
   const {user } = UserAuth();
-  console.log(user.photoURL)
-
-  const genAi = new GoogleGenerativeAI("api key")
-
-  const model = genAi.getGenerativeModel({
-    model: "gemini-1.5-pro"
-  })
 
   
-
-
 
   const handleSubmit = (e) =>{
     e.preventDefault();
@@ -32,13 +22,24 @@ function Conversation() {
   }
 
 
-  const sendMessage = async(message ) =>{
-    try{
-      const response = await model.generateContent(message)
-      setChatLog((prevChatLog) => [...prevChatLog, { type: 'bot', message: response.response.text()}])
-      console.log(response.response.text())
- 
-    } catch(e){
+  const sendMessage = async ( message ) =>{
+   
+    try {
+
+      const response = await fetch("http://localhost:3001/conversationgenerate",{
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json' 
+        },
+        body: JSON.stringify({message})
+      })
+     
+      const responseData = await response.json();
+     
+      const botMessage = responseData.message;
+      setChatLog((prevChatLog) => [...prevChatLog, { type: 'bot', message: botMessage }]);
+      console.log(botMessage);
+    } catch (e) {
       console.log(e);
     }
 

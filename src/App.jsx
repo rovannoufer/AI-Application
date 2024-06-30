@@ -13,6 +13,7 @@ import { AuthContextProvider } from './components/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import Login from './pages/Login';
 import SignIn from './pages/SignIn';
+import Demo from '../../../../../node/music/demo';
 
 function App() {
   
@@ -34,7 +35,7 @@ function App() {
                 <Route path='/content' element={<ProtectedRoute> <Content /> </ProtectedRoute>}/>
             </Route>
 
-           
+           <Route path='/demo' element={<Demo />}/>
 
             <Route  path='/signin' element={<SignIn /> } />
             <Route path='/login' element={<Login />} />
