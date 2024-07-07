@@ -30,12 +30,13 @@ function Model({ result, onClose, url }) {
               
               
                <div className="overflow-y-auto h-72 text-white p-3 lg:p-11 relative">
-                 <h1 className='text-center text-3xl mb-5'> About the Image </h1>
-                 <div className='p-5  hover:bg-gray-500 hover:bg-opacity-15'>
-                 <p  ref={copyRef}> Description: " { result } "  </p>
-                 <button onClick={handleCopy} className='absolute mt-5 lg:right-14 lg:bottom-5 hover:bg-white hover:rounded-xl hover:text-black lg:p-2 p-2'>
+                 <h1 className='text-center text-3xl mb-5'> About the Image</h1>
+                 <button onClick={handleCopy} className=' hover:bg-white hover:rounded-xl hover:text-black lg:p-2 p-2'>
                     <FontAwesomeIcon icon={ faCopy } className='pr-3'/>
                         Copy </button>
+                 <div className='p-5  hover:bg-gray-500 hover:bg-opacity-15'>
+                 <p  ref={copyRef}> Description: " { result } "  </p>
+                
                  </div>
                  
                 

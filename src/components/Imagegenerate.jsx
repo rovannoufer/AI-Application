@@ -105,7 +105,7 @@ function Imagegenerate() {
        {
         file && 
         <div className='flex text-black  p-3 mt-4 w-full lg:w-[30%] rounded-2xl shadow-2xl bg-opacity-5 bg-black relative'>
-         <img src={dataURL} className='w-24'/>
+         <img src={imageURL} className='w-24'/>
         <p className='pl-2'> { file.name} </p>
         <FontAwesomeIcon icon={faXmark} className='absolute right-4 top-3 hover:bg-white p-1 rounded-xl' onClick={()=> setfile("")}/>
       </div>
