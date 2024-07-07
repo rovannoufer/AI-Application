@@ -82,9 +82,8 @@ function Content() {
 
                       {
                         answer && <div className='bg-black text-center text-white rounded-xl p-5 ' >
-                      
+                
                         <p ref={copyRef}>{answer} </p>
-                      
 
                       </div>
                       }

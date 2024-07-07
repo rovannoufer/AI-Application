@@ -5,6 +5,7 @@ import {  faXmark, faArrowLeft, faImage } from '@fortawesome/free-solid-svg-icon
 import Model from './showmodel';
 import { Link } from 'react-router-dom';
 import { useDropzone } from 'react-dropzone';
+import { Toaster, toast } from 'react-hot-toast';
 
 
 
@@ -50,7 +51,7 @@ function Imagegenerate() {
   const handle = async () => {
     const files = file;
     if (!files) {
-      console.error("No file selected");
+      toast.error("No file selected");
       return;
     }
 
@@ -84,6 +85,7 @@ function Imagegenerate() {
   return (
 
     <>
+    <Toaster />
      <div className='flex p-8 gap-4 items-center'>
             <Link  to={'/prompt'}>
             <FontAwesomeIcon icon={ faArrowLeft } />

@@ -1,7 +1,7 @@
 import { faCopy, faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useRef } from 'react'
-
+import { Toaster, toast } from 'react-hot-toast';
 function Model({ result, onClose, url }) {
 
   const copyRef = useRef(null);
@@ -10,15 +10,16 @@ function Model({ result, onClose, url }) {
      const copyData = copyRef.current.innerText;
      try {
         await navigator.clipboard.writeText(copyData);
-        console.log('Content copied to clipboard');
+        toast.success('Content copied to clipboard');
       } catch (err) {
-        console.error('Failed to copy: ', err);
+        toast.error('Failed to copy: ', err);
       }
   }
 
 
   return (
    <>
+   <Toaster/>
     <div className='fixed inset-0 bg-opacity-35 bg-black flex items-center justify-center'>
       <div className='flex flex-col gap-5 text-white lg:w-[50%] '>
           <button className='place-self-end rounded-full p-2' onClick={onClose}> <FontAwesomeIcon icon={faXmark}  /> </button>
