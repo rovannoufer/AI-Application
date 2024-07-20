@@ -41,7 +41,7 @@ function Audio() {
             await uploadBytes(storageRef, file);
             const fileURL = await getDownloadURL(storageRef);
             try {
-                const response = await axios.post('http://localhost:3000/transcribe', {
+                const response = await axios.post('https://audio-1.onrender.com/transcribe', {
                     file_url: fileURL
                   }, {
                     headers: {

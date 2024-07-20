@@ -10,7 +10,10 @@ function Sentiment() {
     const [file, setFile] = useState(null);
     const [fileContent, setFileContent] = useState(null);
     const [fileUrl, setFileUrl] = useState(null);
+    const [filename, setFileName] = useState(null);
     const [errorMessage, setErrorMessage] = useState("");
+
+    
 
     const handleFileChange = async (e) => {
         const selectedFile = e.target.files[0];
@@ -34,13 +37,13 @@ function Sentiment() {
 
         if (file) {
             const filename = file.name;
-          
+          setFileName(filename)
             const storageRef = ref(storage, `audio/${file.name}`);
             try {
                 await uploadBytes(storageRef, file);
                 const fileURL = await getDownloadURL(storageRef);
 
-                const response = await axios.post('http://localhost:3000/sentiment', { 
+                const response = await axios.post('https://audio-1.onrender.com/sentiment', { 
                     file_url: fileURL,
                     files: filename
                 }, {
@@ -100,6 +103,7 @@ function Sentiment() {
                         <FontAwesomeIcon icon={faXmark} className='absolute right-4 top-4 hover:bg-white p-1 rounded-xl' onClick={() => {
                             setFile(null)
                             setFileContent(null)
+                            setFileName(null)
                            }
                         } />
                     </div>
