@@ -33,8 +33,8 @@ function App() {
                 <Route path='/prompt' element={<Image />} />
                 <Route path='/imageprompt' element={ <ProtectedRoute> <Imagegenerate /> </ProtectedRoute>} />
               
-                <Route path='/audio' element={<Audio />} />
-                <Route path='/sentiment' element={<Sentiment />} />
+                <Route path='/audio' element={<ProtectedRoute><Audio /> </ProtectedRoute>} />
+                <Route path='/sentiment' element={<ProtectedRoute> <Sentiment /> </ProtectedRoute>} />
                 <Route path='/contentgenerate' element={<Contentgl />} />
                 <Route path='/content' element={<ProtectedRoute> <Content /> </ProtectedRoute>}/>
             </Route>
