@@ -18,7 +18,6 @@ function Sentiment() {
 
         if (selectedFile && allowedTypes.includes(selectedFile.type)) {
             setFile(selectedFile);
-            setErrorMessage("");
         } else {
             setFile(null);
             toast.error("Please upload a valid audio file (MP3, WAV, or OGG).");
