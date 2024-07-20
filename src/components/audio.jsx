@@ -9,7 +9,7 @@ import { Toaster, toast } from 'react-hot-toast';
 
 function Audio() {
     const [file, setFile] = useState(null);
-    
+    const [errorMessage, setErrorMessage] = useState("");
     const [generatedtext, setGeneratedText] = useState("");
     const [showModel, setShowModel ] = useState(false);
 
