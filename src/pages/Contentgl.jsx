@@ -47,7 +47,7 @@ function Contentgl() {
           </div> 
           <div>
             
-            <Link to={'/audio'} className='hover:bg-black hover:text-white p-3 rounded-xl'> Get Started  <FontAwesomeIcon icon={faArrowRight} className='ml-2' /> </Link>
+            <Link to={'/sentiment'} className='hover:bg-black hover:text-white p-3 rounded-xl'> Get Started  <FontAwesomeIcon icon={faArrowRight} className='ml-2' /> </Link>
           </div>
     </div>
    

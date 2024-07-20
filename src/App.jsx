@@ -14,6 +14,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Login from './pages/Login';
 import SignIn from './pages/SignIn';
 import Audio from './components/audio';
+import Sentiment from './components/sentiment';
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
                 <Route path='/imageprompt' element={ <ProtectedRoute> <Imagegenerate /> </ProtectedRoute>} />
               
                 <Route path='/audio' element={<Audio />} />
+                <Route path='/sentiment' element={<Sentiment />} />
                 <Route path='/contentgenerate' element={<Contentgl />} />
                 <Route path='/content' element={<ProtectedRoute> <Content /> </ProtectedRoute>}/>
             </Route>

@@ -5,17 +5,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {  faXmark } from '@fortawesome/free-solid-svg-icons';
 import { storage,ref, uploadBytes,getDownloadURL } from '../js/firebase';
 import Model from './showmodel';
+import { Toaster, toast } from 'react-hot-toast';
 
 function Audio() {
     const [file, setFile] = useState(null);
-    const [errorMessage, setErrorMessage] = useState("");
+    
     const [generatedtext, setGeneratedText] = useState("");
     const [showModel, setShowModel ] = useState(false);
 
     const handleFileChange = async (e) => {
         const selectedFile = e.target.files[0];
         const allowedTypes = ['audio/mpeg', 'audio/wav', 'audio/ogg'];
-        console.log(selectedFile)
+       
 
         if (selectedFile && allowedTypes.includes(selectedFile.type)) {
            
@@ -23,7 +24,7 @@ function Audio() {
             setErrorMessage("");
         } else {
             setFile(null);
-            setErrorMessage("Please upload a valid audio file (MP3, WAV, or OGG).");
+            toast.error("Please upload a valid audio file (MP3, WAV, or OGG).");
         }
     };
 
@@ -31,7 +32,7 @@ function Audio() {
         e.preventDefault();
         console.log("Clicked")
         if (!file) {
-            setErrorMessage("No valid file selected.");
+            toast.error("No valid file selected.");
             return;
         }
 
@@ -40,18 +41,19 @@ function Audio() {
             await uploadBytes(storageRef, file);
             const fileURL = await getDownloadURL(storageRef);
             try {
-                const response = await axios.post('http://localhost:8000/audio/hello',  {
-                    headers: {
-                        'Content-Type': 'multipart/form-data'
-                    },
+                const response = await axios.post('http://localhost:3000/transcribe', {
                     file_url: fileURL
-                });
-                console.log(response.data.transcript);
+                  }, {
+                    headers: {
+                      'Content-Type': 'application/json'
+                    }
+                  });
+                
                 setGeneratedText(response.data.transcript);
                 setShowModel(true);
             } catch (error) {
-                console.error('Error uploading file:', error);
-                setErrorMessage("Error uploading file. Please try again.");
+                toast.error('Error uploading file:', error);
+                toast.error("Error uploading file. Please try again.");
             }
         }
 
@@ -60,6 +62,7 @@ function Audio() {
 
     return (
        <>
+       <Toaster />
          <div className='flex flex-col lg:flex-row lg:gap-32'>
            <div className='flex flex-col relative mt-[15%] shadow-lg lg:ml-[20%] rounded-xl justify-center lg:w-96 w-52 left-24'>
                 <img src={upload} className='h-28 w-24 relative lg:left-36 left-14'/>
