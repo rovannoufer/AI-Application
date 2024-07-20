@@ -25,13 +25,20 @@ function Model({ result, onClose, url }) {
           <button className='place-self-end rounded-full p-2' onClick={onClose}> <FontAwesomeIcon icon={faXmark}  /> </button>
           <div className='bg-black  rounded-xl shadow-2xl px-20 py-10 flex flex-col items-center gap-5 text-white'>
                
-               <div className='bg-red-500'>
+              {
+              url &&  <div className='bg-red-500'>
                 <img src={url} className='h-24 w-28' />
                </div>
-              
+              }
               
                <div className="overflow-y-auto h-72 text-white p-3 lg:p-11 relative">
-                 <h1 className='text-center text-3xl mb-5'> About the Image</h1>
+                 <h1 className='text-center text-3xl mb-5'> 
+                  {
+                    url ?  "About the Image " : " About the Audio"
+                  }
+                  
+                  
+                  </h1>
                  <button onClick={handleCopy} className=' hover:bg-white hover:rounded-xl hover:text-black lg:p-2 p-2'>
                     <FontAwesomeIcon icon={ faCopy } className='pr-3'/>
                         Copy </button>

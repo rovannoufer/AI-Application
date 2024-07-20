@@ -48,26 +48,26 @@ function Header() {
 
            <NavLink to={'/'} className={`  lg:text-black sm:text-white`} >
            
-              Home
+              HOME
             
             </NavLink>
            <NavLink to={'/conversation'} className={"  lg:text-black sm:text-white"}>
           
-            Conversation
+            CONVERSATION
            </NavLink>
            <NavLink to={'/prompt'} className={" lg:text-black sm:text-white"}> 
            
-           Prompting
+           IMAGE
            </NavLink>
            <NavLink to={'/contentgenerate'} className={" lg:text-black sm:text-white"}>
            
-           Content Generation
+           AUDIO
            </NavLink>
 
           
 
-           { user ? <button onClick={ handleSignOut }  className={"  lg:text-black sm:text-white"}> SignOut </button> :
-            <button onClick={ handleSignIn } className={"  lg:text-black sm:text-white"}> SignIn </button> }
+           { user ? <button onClick={ handleSignOut }  className={"  lg:text-black sm:text-white"}> SIGNOUT </button> :
+            <button onClick={ handleSignIn } className={"  lg:text-black sm:text-white"}> SIGNIN </button> }
          
 
             

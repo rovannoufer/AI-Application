@@ -13,6 +13,7 @@ import { AuthContextProvider } from './components/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import Login from './pages/Login';
 import SignIn from './pages/SignIn';
+import Audio from './components/audio';
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
                 <Route path='/prompt' element={<Image />} />
                 <Route path='/imageprompt' element={ <ProtectedRoute> <Imagegenerate /> </ProtectedRoute>} />
               
+                <Route path='/audio' element={<Audio />} />
                 <Route path='/contentgenerate' element={<Contentgl />} />
                 <Route path='/content' element={<ProtectedRoute> <Content /> </ProtectedRoute>}/>
             </Route>

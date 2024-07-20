@@ -31,17 +31,34 @@ function Conversationl() {
     
   </div>
 
-  <div className='flex flex-col items-center  text-black text-center '>
+  <div className='flex flex-col lg:flex-row justify-center gap-6 text-black text-center '>
     <div className='shadow-2xl  rounded-2xl lg:w-[25%] p-10'>
-    <div>
-    <p className='text-2xl lg:text-3xl mb-5'> Enhance your interactions with our advanced AI-driven conversational tools. </p>    
-    </div> 
-    <div>
-       
-       <Link to={'/chat'} className='hover:bg-black hover:text-white p-3 rounded-xl'> Get Started  <FontAwesomeIcon icon={faArrowRight} className='ml-2' /> </Link>
+            <div>
+              <p> CHAT </p>
+            <p className='text-2xl lg:text-3xl mb-5'> Enhance your interactions with our advanced AI-driven conversational tools. </p>    
+            </div> 
+            <div>
+              
+              <Link to={'/chat'} className='hover:bg-black hover:text-white p-3 rounded-xl'> Get Started  <FontAwesomeIcon icon={faArrowRight} className='ml-2' /> </Link>
+            </div>
+
     </div>
+    <div className='shadow-2xl  rounded-2xl lg:w-[25%] p-10'>
+            <div>
+            <p> CONTENT GENERATION </p>
+            <p className='text-2xl lg:text-3xl mb-5'>   Embrace the future of content creation with AI, where imagination meets innovation effortlessly.  </p>    
+            </div> 
+            <div>
+              
+              <Link to={'/content'} className='hover:bg-black hover:text-white p-3 rounded-xl'> Get Started  <FontAwesomeIcon icon={faArrowRight} className='ml-2' /> </Link>
+            </div>
+
     </div>
+
+
   </div>
+
+  
     </>
   )
 }

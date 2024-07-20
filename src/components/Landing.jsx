@@ -40,15 +40,15 @@ function Landing() {
                      </button> </Link>
             </div>
          <div className='p-10 basis-[10%] lg:basis-[25%] border rounded-2xl shadow-2xl  bg-black text-center'>
-              <h1 className='text-4xl sm:text-3xl md:text-4xl lg:text-5xl mb-2'> Prompting </h1>
+              <h1 className='text-4xl sm:text-3xl md:text-4xl lg:text-5xl mb-2'> Image </h1>
               <p className='italic'> This generate content from media files </p>
               <Link to={'/prompt'}> <button className='mt-5 hover:bg-white hover:text-black p-3 hover:rounded-xl'> Get Started
                        <FontAwesomeIcon icon={faArrowRight} className='ml-2' />
                      </button> </Link>
          </div>
          <div className='p-10 basis-[10%] lg:basis-[25%] border rounded-2xl shadow-2xl  bg-black text-center'>
-              <h1 className='text-4xl sm:text-3xl md:text-4xl lg:text-5xl mb-2'> Content Generation </h1>
-              <p className='italic'> Transform your creative process with AI-powered content generation </p>
+              <h1 className='text-4xl sm:text-3xl md:text-4xl lg:text-5xl mb-2'> Audio </h1>
+              <p className='italic'> Get Entertained with Audio </p>
               <Link to={'/contentgenerate'}> <button className='mt-5 hover:bg-white hover:text-black p-3 hover:rounded-xl'> Get Started
                        <FontAwesomeIcon icon={faArrowRight} className='ml-2' />
                      </button> </Link>
