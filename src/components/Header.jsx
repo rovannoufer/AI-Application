@@ -64,6 +64,11 @@ function Header() {
            AUDIO
            </NavLink>
 
+           <NavLink to={'/video'} className={" lg:text-black sm:text-white"}>
+           
+           VIDEO
+           </NavLink>
+
           
 
            { user ? <button onClick={ handleSignOut }  className={"  lg:text-black sm:text-white"}> SIGNOUT </button> :

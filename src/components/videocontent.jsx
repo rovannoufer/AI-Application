@@ -4,12 +4,16 @@ import upload from "../img/images.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { Toaster, toast } from 'react-hot-toast';
+import Model from './showmodel';
 
-function Subtitle() {
+function Videocontent() {
+
     const [file, setFile] = useState(null);
     const [errorMessage, setErrorMessage] = useState("");
     const [fileUrl, setFileUrl] = useState(null);
     const [filename, setFilename] = useState(null);
+    const [generatedtext, setGeneratedText] = useState("");
+    const [showModel, setShowModel ] = useState(false);
 
     const handleFileChange = (e) => {
         const selectedFile = e.target.files[0];
@@ -24,6 +28,7 @@ function Subtitle() {
         }
 
     };
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -43,39 +48,32 @@ function Subtitle() {
             });
 
             const audioPath = response.data.audioPath;
-
-            const subtitleResponse = await axios.post('http://localhost:3000/subtitle', {
-                audioPath
+            
+           console.log(audioPath);
+            const subtitleResponse = await axios.post('http://localhost:3000/transcribe', {
+                file_url: audioPath
             }, {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                responseType: 'blob'
             });
 
-            const url = window.URL.createObjectURL(new Blob([subtitleResponse.data]));
-            setFileUrl(url);
-            setFilename(file.name.replace(/\.[^/.]+$/, ".vtt")); 
-        } catch (error) {
+            console.log(subtitleResponse.data.transcript);
+            const data = subtitleResponse.data.transcript;
+
+            const data1 = JSON.stringify(data);
+            setGeneratedText(data1.substring(16));
+            setShowModel(true);
+           
+        }catch (error) {
             console.error('Error processing file:', error);
             toast.error("Error processing file. Please try again.");
         }
-    };
+    }
 
 
-    const handleDownloadFile = () => {
-        if (fileUrl) {
-            const link = document.createElement('a');
-            link.href = fileUrl;
-            link.setAttribute('download', filename);
-            document.body.appendChild(link);
-            link.click();
-            link.remove();
-        }
-    };
-
-    return (
-        <>
+  return (
+    <>
         <Toaster />
             <div className='flex flex-col lg:flex-row lg:gap-32'>
                 <div className='flex flex-col relative mt-[15%] shadow-lg lg:ml-[20%] rounded-xl justify-center lg:w-96 w-52 left-24'>
@@ -92,27 +90,21 @@ function Subtitle() {
                         <img src={upload} className='w-24' />
                         <p className='pl-2 relative top-10'>{file.name}</p>
                         <FontAwesomeIcon icon={faXmark} className='absolute right-4 top-4 hover:bg-white p-1 rounded-xl' onClick={() => {
-                            setFile(null)
-                            setFileUrl(null)
+                            // setFile(null)
+                            // setFileUrl(null)
                            }
                         } />
                     </div>
                 )}
 
-                {fileUrl && (
-                   <>
-                    <div className='flex relative lg:top-72 justify-center gap-2'>
-                        <p className='relative top-4'> SUBTITLE: </p>
-                        
-                        <button onClick={handleDownloadFile} className='mt-2 hover:bg-black hover:text-white p-2 rounded-lg mb-4 w-28'>DOWNLOAD</button>
-                    </div>
-                   </>
-                )}
+                { showModel && <Model onClose={()=> setShowModel(false)} result = { generatedtext }  />  }
+
+                
                 
                 </div>
             </div>
         </>
-    );
+  )
 }
 
-export default Subtitle;
+export default Videocontent

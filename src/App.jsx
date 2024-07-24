@@ -16,6 +16,8 @@ import SignIn from './pages/SignIn';
 import Audio from './components/audio';
 import Sentiment from './components/sentiment';
 import Subtitle from './components/subtitle';
+import Videocontent from './components/videocontent';
+import Video from './pages/video';
 
 
 function App() {
@@ -39,7 +41,10 @@ function App() {
                 <Route path='/contentgenerate' element={<Contentgl />} />
                 <Route path='/content' element={<ProtectedRoute> <Content /> </ProtectedRoute>}/>
 
-                <Route path='/subtitle' element={<Subtitle />}/>
+
+                <Route path='/video' element={<Video />} />
+                <Route path='/subtitle' element={<ProtectedRoute> <Subtitle /> </ProtectedRoute>}/>
+                <Route path='/videocontent' element={<ProtectedRoute><Videocontent /> </ProtectedRoute> } />
             </Route>
 
             <Route  path='/signin' element={<SignIn /> } />

@@ -53,6 +53,13 @@ function Landing() {
                        <FontAwesomeIcon icon={faArrowRight} className='ml-2' />
                      </button> </Link>
          </div>
+         <div className='p-10 basis-[10%] lg:basis-[25%] border rounded-2xl shadow-2xl  bg-black text-center'>
+              <h1 className='text-4xl sm:text-3xl md:text-4xl lg:text-5xl mb-2'> Video </h1>
+              <p className='italic'> Get Entertained with Video </p>
+              <Link to={'/video'}> <button className='mt-5 hover:bg-white hover:text-black p-3 hover:rounded-xl'> Get Started
+                       <FontAwesomeIcon icon={faArrowRight} className='ml-2' />
+                     </button> </Link>
+         </div>
     </div>
     </>
   )
