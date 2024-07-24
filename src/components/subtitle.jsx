@@ -26,7 +26,9 @@ function Subtitle() {
     };
 
     const handleSubmit = async (e) => {
+        
         e.preventDefault();
+        console.log("Clicked handlesubmit");
         if (!file) {
             toast.error("No valid file selected.");
             return;
@@ -36,7 +38,7 @@ function Subtitle() {
         formData.append('video', file);
 
         try {
-            const response = await axios.post('http://localhost:3000/upload', formData, {
+            const response = await axios.post('https://audio-2.onrender.com/upload', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -44,7 +46,7 @@ function Subtitle() {
 
             const audioPath = response.data.audioPath;
 
-            const subtitleResponse = await axios.post('http://localhost:3000/subtitle', {
+            const subtitleResponse = await axios.post('https://audio-2.onrender.com/subtitle', {
                 audioPath
             }, {
                 headers: {
@@ -53,6 +55,7 @@ function Subtitle() {
                 responseType: 'blob'
             });
 
+            console.log("datarecived");
             const url = window.URL.createObjectURL(new Blob([subtitleResponse.data]));
             setFileUrl(url);
             setFilename(file.name.replace(/\.[^/.]+$/, ".vtt")); 

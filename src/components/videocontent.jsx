@@ -41,16 +41,15 @@ function Videocontent() {
         formData.append('video', file);
 
         try {
-            const response = await axios.post('http://localhost:3000/upload', formData, {
+            const response = await axios.post('https://audio-2.onrender.com/upload', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
             });
 
             const audioPath = response.data.audioPath;
-            
-           console.log(audioPath);
-            const subtitleResponse = await axios.post('http://localhost:3000/transcribe', {
+        
+            const subtitleResponse = await axios.post('https://audio-2.onrender.com/transcribe', {
                 file_url: audioPath
             }, {
                 headers: {
@@ -58,7 +57,7 @@ function Videocontent() {
                 },
             });
 
-            console.log(subtitleResponse.data.transcript);
+           
             const data = subtitleResponse.data.transcript;
 
             const data1 = JSON.stringify(data);
