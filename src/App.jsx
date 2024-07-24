@@ -15,6 +15,7 @@ import Login from './pages/Login';
 import SignIn from './pages/SignIn';
 import Audio from './components/audio';
 import Sentiment from './components/sentiment';
+import Subtitle from './components/subtitle';
 
 
 function App() {
@@ -37,6 +38,8 @@ function App() {
                 <Route path='/sentiment' element={<ProtectedRoute> <Sentiment /> </ProtectedRoute>} />
                 <Route path='/contentgenerate' element={<Contentgl />} />
                 <Route path='/content' element={<ProtectedRoute> <Content /> </ProtectedRoute>}/>
+
+                <Route path='/subtitle' element={<Subtitle />}/>
             </Route>
 
             <Route  path='/signin' element={<SignIn /> } />
