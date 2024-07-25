@@ -89,8 +89,8 @@ function Videocontent() {
                         <img src={upload} className='w-24' />
                         <p className='pl-2 relative top-10'>{file.name}</p>
                         <FontAwesomeIcon icon={faXmark} className='absolute right-4 top-4 hover:bg-white p-1 rounded-xl' onClick={() => {
-                            // setFile(null)
-                            // setFileUrl(null)
+                            setFile(null)
+                            setFileUrl(null)
                            }
                         } />
                     </div>
